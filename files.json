@@ -1,0 +1,33 @@
+{
+  "textures": [
+    "DefaultTextures.zip",
+    "DarkTextures.zip"
+  ],
+  "skyboxes": [
+    "Aurora",
+    "Beautiful",
+    "Blue",
+    "Chillgray",
+    "Chillpink",
+    "ChromaKey",
+    "Cyan",
+    "Emo",
+    "Goodnight",
+    "Hades",
+    "Hazy",
+    "LightBlue",
+    "Lightpink",
+    "Moonlight",
+    "NeonSky",
+    "NeonSky2",
+    "Night",
+    "Orange",
+    "Overcast",
+    "Pandora",
+    "PinkSunrise",
+    "Red",
+    "SpaceBlue",
+    "Spooky",
+    "Universe"
+  ]
+}
