@@ -2,38 +2,31 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<title>Skybox Loader</title>
-<style>
-    body { background: #222; color: #fff; font-family: monospace; }
-</style>
+<title>Skybox & Textures Loader (.tex + .dds)</title>
 </head>
 <body>
-<h1>Ładowanie wszystkich plików z skybox...</h1>
+<h1>Ładowanie plików .tex i .dds</h1>
 
 <script>
-    // Lista wszystkich plików w skybox i podfolderach
-    const files = [
-        'sky1.png',
-        'clouds/cloud1.png',
-        'clouds/cloud2.png',
-        'textures/wood/wood1.png',
-        'textures/wood/wood2.png',
-        'textures/stone/stone1.png',
-        'textures/stone/stone2.png'
-        // Dodaj tutaj wszystkie pliki z podfolderów
-    ];
+(async () => {
+    try {
+        const res = await fetch('./files.json');
+        const data = await res.json();
 
-    const basePath = './skybox/';
+        ['skybox','textures'].forEach(folder => {
+            data[folder].forEach(file => {
+                fetch(`${folder}/${file}`)
+                  .then(r => r.blob()) // pobieramy zawartość pliku jako blob
+                  .then(blob => console.log(`Załadowano: ${folder}/${file}`, blob))
+                  .catch(e => console.error('Błąd przy pliku:', file, e));
+            });
+        });
 
-    files.forEach(file => {
-        const img = new Image();
-        img.src = basePath + file;  // Wymusza pobranie pliku przez przeglądarkę
-        img.style.display = 'none'; // Nie pokazujemy obrazów na stronie
-        document.body.appendChild(img);
-        console.log('Załadowano:', file);
-    });
-
-    console.log('Wszystkie pliki skybox zostały załadowane.');
+        console.log('Wszystkie pliki .tex i .dds zostały pobrane.');
+    } catch(e) {
+        console.error('Nie udało się załadować JSON', e);
+    }
+})();
 </script>
 
 </body>
