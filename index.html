@@ -1,9 +1,40 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>Hi</title>
+<meta charset="UTF-8">
+<title>Skybox Loader</title>
+<style>
+    body { background: #222; color: #fff; font-family: monospace; }
+</style>
 </head>
 <body>
+<h1>Ładowanie wszystkich plików z skybox...</h1>
+
+<script>
+    // Lista wszystkich plików w skybox i podfolderach
+    const files = [
+        'sky1.png',
+        'clouds/cloud1.png',
+        'clouds/cloud2.png',
+        'textures/wood/wood1.png',
+        'textures/wood/wood2.png',
+        'textures/stone/stone1.png',
+        'textures/stone/stone2.png'
+        // Dodaj tutaj wszystkie pliki z podfolderów
+    ];
+
+    const basePath = './skybox/';
+
+    files.forEach(file => {
+        const img = new Image();
+        img.src = basePath + file;  // Wymusza pobranie pliku przez przeglądarkę
+        img.style.display = 'none'; // Nie pokazujemy obrazów na stronie
+        document.body.appendChild(img);
+        console.log('Załadowano:', file);
+    });
+
+    console.log('Wszystkie pliki skybox zostały załadowane.');
+</script>
+
 </body>
 </html>
